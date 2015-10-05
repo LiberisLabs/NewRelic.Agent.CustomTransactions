@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<extension xmlns="urn:newrelic-extension">
+	<instrumentation>
+		<tracerFactory metricName="MassTransit/Send">
+			<match assemblyName="MassTransit" className="MassTransit.Transports.SendEndpoint">
+				<exactMethodMatcher methodName="Send" parameters="!!0,System.Threading.CancellationToken" />
+				<exactMethodMatcher methodName="Send" parameters="!!0,MassTransit.Pipeline.IPipe`1[MassTransit.SendContext`1[!!0]],System.Threading.CancellationToken" />
+			</match>
+		</tracerFactory>
+	</instrumentation>
+</extension>
